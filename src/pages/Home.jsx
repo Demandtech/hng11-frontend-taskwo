@@ -1,5 +1,6 @@
 import BestSeller from "../components/home/BestSeller";
 import HomeHero from "../components/home/HomeHero";
+import NewsLetter from "../components/home/NewsLetter";
 import MainLayout from "../components/layout/MainLayout";
 
 const Home = () => {
@@ -7,6 +8,7 @@ const Home = () => {
 		<MainLayout>
 			<HomeHero />
 			<BestSeller />
+			<NewsLetter />
 		</MainLayout>
 	);
 };
