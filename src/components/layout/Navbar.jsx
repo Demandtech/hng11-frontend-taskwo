@@ -9,7 +9,6 @@ import {
 	NavbarMenu,
 	NavbarMenuItem,
 	Button,
-	Image,
 } from "@nextui-org/react";
 import { Link, useLocation } from "react-router-dom";
 import { CartIcon, LogoIcon, SearchIcon, UserIcon } from "../Svgs";
