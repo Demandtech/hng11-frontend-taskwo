@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const ProductCard = ({ data }) => {
 	return (
-		<div className="bg-white p-4  w-full sm:max-w-[270px] lg:max-w-[340px]">
+		<div className="bg-white p-4  w-[300px] lg:w-[370px] min-w-[300px] lg:max-w-[340px]">
 			<Image width={"100%"} height={"100%"} src={data.image} alt="product" />
 
 			<div className="pt-4">

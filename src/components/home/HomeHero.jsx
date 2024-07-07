@@ -11,8 +11,9 @@ const HomeHero = () => {
 	return (
 		<div>
 			<div
+				className="h-[400px] md:h-[500px] w-full"
 				style={{
-					height: "400px",
+					// height: "400px",
 					// background: `url(${heroImg})`,
 					background: `
                 linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.4)),
