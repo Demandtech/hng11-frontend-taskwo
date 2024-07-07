@@ -20,9 +20,9 @@ export default function App() {
 	const location = useLocation();
 	const menuItems = [
 		{ name: "Home", href: "/" },
-		{ name: "About", href: "#" },
+		{ name: "About", href: "/about" },
 		{ name: "Our Products", href: "/products" },
-		{ name: "Blog", href: "#" },
+		{ name: "Blog", href: "/blog" },
 	];
 
 	return (
@@ -40,7 +40,9 @@ export default function App() {
 					className="md:hidden"
 				/>
 				<NavbarBrand>
-					<LogoIcon />
+					<Link to="/">
+						<LogoIcon />
+					</Link>
 				</NavbarBrand>
 			</NavbarContent>
 
@@ -50,9 +52,9 @@ export default function App() {
 			>
 				{menuItems.map((item) => {
 					return (
-						<NavbarItem key={item.name}>
+						<NavbarItem className="hover:text-primary" key={item.name}>
 							<Link
-								className={`pb-3 px-1  text-lightgrey font-light text-sm transition-all duration-150 ease-linear ${
+								className={`pb-3 px-1 hover:text-primary text-lightgrey font-light text-sm transition-all duration-150 ease-linear ${
 									location.pathname === item.href
 										? "border-b-4 border-primary font-semibold text-primary"
 										: ""

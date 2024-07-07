@@ -1,28 +1,77 @@
+import { Button } from "@nextui-org/react";
 import ProductAside from "../components/ProductAside";
 import ProductCard from "../components/ProductCard";
-import { ArrowLeftIcon, ArrowRightIcon } from "../components/Svgs";
+import {
+	ArrowLeftIcon,
+	ArrowRightIcon,
+	CloseIcon,
+	FilterIcon,
+} from "../components/Svgs";
 import MainLayout from "../components/layout/MainLayout";
 import products from "../data";
+import { useEffect, useState } from "react";
 
 const Products = () => {
+	const [openFilter, setOpenFilter] = useState(false);
+
+	useEffect(() => {
+		const body = document.body;
+		if (openFilter) {
+			body.style.overflowY = "hidden";
+		} else {
+			body.style.overflowY = "auto";
+		}
+
+		return () => {
+			body.style.overflowY = "auto";
+		};
+	}, [openFilter]);
 	return (
 		<MainLayout>
-			<div className="py-14 px-2  sm:px-5 md:px-20">
-				<h2 className="font-semibold text-2xl text-center pb-10 text-black90">
-					Product List
-				</h2>
-				<div className="grid lg:grid-cols-3 gap-16">
-					<div className="lg:col-span-1">
-						<ProductAside />
+			<div className="py-14 px-2  sm:px-5 md:px-20 ">
+				<div className="pb-10 flex items-center ">
+					<h2 className="font-semibold text-2xl ml-auto md:mx-auto text-center text-black90">
+						Product List
+					</h2>
+					<Button
+						onPress={() => {
+							setOpenFilter(!openFilter);
+						}}
+						className="ml-auto md:hidden"
+					>
+						<FilterIcon />
+					</Button>
+				</div>
+				<div className="flex  md:gap-16">
+					<div className=" md:w-[30%] ">
+						<div
+							className={`${
+								openFilter ? "block p-2" : "hidden"
+							} z-20 left-0 bottom-0 right-0 top-12 bg-[#f1f1f1] min-h-svh overflow-auto fixed md:static md:block`}
+						>
+							<div className="flex mb-4 sticky pt-5 pb-2 bg-[#f1f1f1] top-0 justify-end md:hidden">
+								<Button
+									isIconOnly
+									onPress={() => setOpenFilter(false)}
+									className=""
+									size="sm"
+								>
+									<CloseIcon />
+								</Button>
+							</div>
+							<div>
+								<ProductAside />
+							</div>
+						</div>
 					</div>
-					<div className="lg:col-span-2">
+					<div className="md:w-[70%] px-5 md:px-0">
 						<div className="flex gap-7 flex-wrap mb-16 ">
 							{products.map((product) => {
 								return <ProductCard key={product.id} data={product} />;
 							})}
 						</div>
 						<div>
-							<ul className="flex items-center gap-3 justify-center sm:justify-end">
+							<ul className="flex items-center gap-2 md:gap-3 justify-end">
 								<li>
 									<ArrowLeftIcon />
 								</li>

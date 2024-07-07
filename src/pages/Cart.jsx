@@ -48,30 +48,33 @@ const Cart = () => {
 							})}
 						</div>
 					</div>
-					<div className="md:col-span-1 md:mt-14">
+					<div className="md:col-span-1 md:mt-[60px]">
 						<div className="bg-primary py-2 text-center text-white">
 							Order Summary
 						</div>
-						<div className="mb-5 bg-white p-5 space-y-3">
+						<div className="mb-5 bg-white text-lg py-5 px-10 space-y-3">
 							<p className="flex">
-								<p className="font-semibold mr-auto md:mr-5">Sub-Total :</p>{" "}
-								<p> ₦29,000.00</p>
+								<p className="font-semibold ">Sub-Total :</p>{" "}
+								<p className="ml-auto"> ₦ 29,000.00</p>
 							</p>
 
 							<p className="flex">
 								<p className="font-semibold">Coupon :</p>{" "}
-								<p className="ml-auto"> ₦29,000.00</p>
+								<p className="ml-auto"> - ₦ 999.00</p>
 							</p>
 							<p className="flex">
 								<p className="font-semibold">Shipping :</p>{" "}
-								<p className='ml-auto'> ₦29,000.00</p>
+								<p className="ml-auto"> ₦ 2,000.00</p>
 							</p>
 							<p className=" flex">
 								<p className="font-semibold">Total :</p>{" "}
-								<span className="ml-auto"> ₦29,000.00</span>
+								<span className="ml-auto"> ₦31,999.99</span>
 							</p>
 						</div>
-						<Link className="w-full block text-center py-2 bg-primary text-white">
+						<Link
+							to="/checkout"
+							className="w-full block text-center py-2 bg-primary text-white"
+						>
 							Checkout
 						</Link>
 					</div>

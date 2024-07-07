@@ -22,7 +22,7 @@ const ProductAside = () => {
 	// }, [material]);
 
 	return (
-		<div className="flex flex-col gap-10">
+		<div className="flex mb-20 flex-col w-full min-h-dvh gap-10 overflow-y-auto">
 			<div>
 				<div className="bg-primary py-2 px-4 text-white">Product Category</div>
 				<ul className="bg-white space-y-3 p-4">

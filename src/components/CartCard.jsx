@@ -5,7 +5,7 @@ import { Button, Image } from "@nextui-org/react";
 const CartCard = ({ item }) => {
 	const [quantity, setQuantity] = useState(1);
 	return (
-		<div className="flex bg-white items-center justify-between p-5">
+		<div className="flex bg-white items-center justify-between p-2 sm:p-5">
 			<div className="flex sm:w-1/2 gap-3 sm:gap-6 ">
 				<Image height={100} width={100} src={item.image} />
 				<div>
@@ -19,14 +19,16 @@ const CartCard = ({ item }) => {
 				<div className="py-3">
 					<div className="text-end">
 						{/* <p className="text-xs font-light  !text-grey text-start">Price</p> */}
-						<p className=" mb-2 sm:text-2xl font-semibold whitespace-nowrap">₦ {item.price}</p>
+						<p className=" mb-2 sm:text-2xl font-semibold whitespace-nowrap">
+							₦ {item.price}
+						</p>
 					</div>
 					<div className="flex items-center">
 						<span className="pr-2 text-grey text-[10px] sm:text-sm">
 							Quantity:
 						</span>
 						<button
-							size="sm"
+							className="w-5 h-5 flex justify-center items-center bg-primary"
 							onClick={() => {
 								setQuantity((prev) => {
 									if (prev > 1) {
@@ -36,8 +38,7 @@ const CartCard = ({ item }) => {
 									}
 								});
 							}}
-							className="bg-primary"
-							isIconOnly
+							// className="bg-primary"
 						>
 							<MinusIcon />
 						</button>
@@ -50,7 +51,7 @@ const CartCard = ({ item }) => {
 									return prev + 1;
 								});
 							}}
-							className="bg-white border  border-primary"
+							className="bg-white border flex items-center justify-center  w-5 h-5 border-primary"
 							isIconOnly
 							size="sm"
 						>
