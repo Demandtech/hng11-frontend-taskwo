@@ -9,7 +9,7 @@ const Description = () => {
 
 			<div className="mt-10 text-black80">
 				<h5 className="text-base font-medium mb-5">key Features:</h5>
-				<ul className="tracking-wider list-disc list-outside pl-12 mb-5 space-y-3 ">
+				<ul className="tracking-wider text-sm sm:text-base list-disc list-outside pl-12 mb-5 space-y-3 ">
 					<li className="">
 						<span className="font-medium">Material: </span> Crafted from durable
 						ceramic that ensures even heat distribution and retention, perfect
@@ -39,7 +39,7 @@ const Description = () => {
 				<h5 className="text-base font-medium mb-5">
 					Why Choose Our Ceramic Cooking Pot?
 				</h5>
-				<p className="mb-5">
+				<p className="mb-5 text-sm sm:text-base ">
 					Our ceramic cooking pot is more than just a cooking vessel; it's a
 					reflection of our commitment to quality and culinary excellence.
 					Whether you're simmering soups, braising meats, or preparing delicate
@@ -48,12 +48,12 @@ const Description = () => {
 					stains and odors, preserving the integrity of your dishes.
 				</p>
 				<h5 className="text-base font-medium mb-5">Care and Maintenance:</h5>
-				<p className="mb-5">
+				<p className="mb-5 text-sm sm:text-base ">
 					To maintain its pristine condition, hand wash with mild soap and avoid
 					harsh abrasives. The ceramic material is dishwasher-safe for added
 					convenience, ensuring effortless cleanup after every use.
 				</p>
-				<p>
+				<p className="text-sm sm:text-base">
 					Transform your kitchen into a culinary haven with our premium ceramic
 					cooking pot. Designed to meet the demands of professional chefs and
 					home cooks alike, it combines functionality with timeless elegance,

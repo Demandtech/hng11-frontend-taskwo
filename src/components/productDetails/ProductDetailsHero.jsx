@@ -46,10 +46,10 @@ const ProductDetailsHero = () => {
 			</div>
 			<div className="md:w-1/2 w-full">
 				<div className="flex items-end">
-					<p className="font-semibold text-2xl md:text-4xl">{product.name}</p>
+					<p className="font-semibold text-[20px] md:text-4xl">{product.name}</p>
 					<p className="text-[10px] !text-black80 pb-[6px]">(in stock)</p>
 				</div>
-				<p className="max-w-[70%] py-2 text-lg text-black90 lg:text-2xl ">
+				<p className="max-w-[90%] py-2 text-base sm:text-lg text-black90 lg:text-2xl ">
 					{product.description}
 				</p>
 				<div className="flex items-end gap-2">
@@ -64,7 +64,7 @@ const ProductDetailsHero = () => {
 						{product.review}
 					</p>
 				</div>
-				<p className="text-black80 text-base md:text-lg py-2">
+				<p className="text-black80 text-sm leading-5 sm:text-base md:text-lg py-2">
 					Elevate your culinary experience with our premium ceramic cooking pot,
 					meticulously crafted to enhance the flavors and textures of your
 					favorite dishes. Made from high-quality ceramic, this versatile pot

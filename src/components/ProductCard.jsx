@@ -1,22 +1,24 @@
 import { Image, Button } from "@nextui-org/react";
 import { CartIcon, FilledStar, StrokedStar, ColorIcon } from "./Svgs";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ data }) => {
 	return (
-		<div className="bg-white p-4 w-full sm:max-w-[270px] lg:max-w-[340px]">
+		<div className="bg-white p-4  w-full sm:max-w-[270px] lg:max-w-[340px]">
 			<Image width={"100%"} height={"100%"} src={data.image} alt="product" />
 
 			<div className="pt-4">
-				<div className="flex items-start justify-between">
-					<div className="flex items-end">
+				<div className="flex items-start gap-4 justify-between">
+					<div className="flex  items-end">
 						<Link
 							to={`/products/${data.id}`}
-							className="font-semibold text-lg md:text-2xl"
+							className="font-semibold whitespace-nowrap text-lg md:text-2xl"
 						>
 							{data.name}
 						</Link>
-						<p className="text-[10px] !text-black80 pb-[6px]">(in stock)</p>
+						<p className="text-[10px] !text-black80 whitespace-nowrap pb-[6px]">
+							(in stock)
+						</p>
 					</div>
 					<div className="">
 						<div className="flex gap-[2px] pb-1 items-center">
@@ -31,7 +33,9 @@ const ProductCard = ({ data }) => {
 						</p>
 					</div>
 				</div>
-				<p className="w-[70%]">{data.description}</p>
+				<p className="w-full text-sm  sm:text-base sm:w-[80%]">
+					{data.description}
+				</p>
 				<div className="py-2 flex items-center gap-2">
 					<div className="flex gap-1">
 						{data.colors.map((color) => {

@@ -9,7 +9,9 @@ const ReviewCard = ({ item }) => {
 				<div className="flex items-center gap-5 mb-5">
 					<Avatar className="w-16 h-16" src={item.image} />
 					<div>
-						<p className="text-lg md:text-2xl mb-3">{item.name}</p>
+						<p className="text-sm sm:text-lg md:text-2xl mb-3 font-semibold  whitespace-nowrap">
+							{item.name}
+						</p>
 						<div className="flex gap-[2px] pb-1 items-center">
 							<FilledStar />
 							<FilledStar />
@@ -19,9 +21,11 @@ const ReviewCard = ({ item }) => {
 						</div>
 					</div>
 				</div>
-				<p className="ml-auto text-grey">12 hours ago</p>
+				<p className="ml-auto text-grey text-sm sm:text-base whitespace-nowrap">
+					12 hours ago
+				</p>
 			</div>
-			<p className="text-lg ">{item.text}</p>
+			<p className="text-sm sm:text-lg ">{item.text}</p>
 		</div>
 	);
 };
