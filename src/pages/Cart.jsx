@@ -1,7 +1,9 @@
 import { Button } from "@nextui-org/react";
 import { ArrowLeftIcon, DeleteIcon } from "../components/Svgs";
 import CartLayout from "../components/layout/CartLayout";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import products from "../data";
+import CartCard from "../components/CartCard";
 
 const Cart = () => {
 	const navigate = useNavigate();
@@ -22,7 +24,7 @@ const Cart = () => {
 						Order history
 					</p>
 				</div>
-				<div className="grid md:grid-cols-3">
+				<div className="grid md:grid-cols-3 gap-10">
 					<div className="md:col-span-2">
 						<div className="flex items-center sm:items-end justify-between">
 							<div className="inline-flex items-end sm:gap-3 sm:border-b border-lightgrey sm:pr-10">
@@ -40,8 +42,39 @@ const Cart = () => {
 								Remove
 							</Button>
 						</div>
+						<div className="mt-5 space-y-4">
+							{products.map((item) => {
+								return <CartCard item={item} />;
+							})}
+						</div>
 					</div>
-					<div className="md:col-span-1"></div>
+					<div className="md:col-span-1 md:mt-14">
+						<div className="bg-primary py-2 text-center text-white">
+							Order Summary
+						</div>
+						<div className="mb-5 bg-white p-5 space-y-3">
+							<p className="flex">
+								<p className="font-semibold mr-auto md:mr-5">Sub-Total :</p>{" "}
+								<p> ₦29,000.00</p>
+							</p>
+
+							<p className="flex">
+								<p className="font-semibold">Coupon :</p>{" "}
+								<p className="ml-auto"> ₦29,000.00</p>
+							</p>
+							<p className="flex">
+								<p className="font-semibold">Shipping :</p>{" "}
+								<p className='ml-auto'> ₦29,000.00</p>
+							</p>
+							<p className=" flex">
+								<p className="font-semibold">Total :</p>{" "}
+								<span className="ml-auto"> ₦29,000.00</span>
+							</p>
+						</div>
+						<Link className="w-full block text-center py-2 bg-primary text-white">
+							Checkout
+						</Link>
+					</div>
 				</div>
 			</div>
 		</CartLayout>
