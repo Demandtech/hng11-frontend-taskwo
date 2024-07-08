@@ -77,7 +77,7 @@ export const LogoIcon = () => {
 			height="18"
 			viewBox="0 0 127 18"
 			fill="none"
-			className="w-24 lg:w-32 h-5"
+			// className="w-24 lg:w-32 h-5"
 			xmlns="http://www.w3.org/2000/svg"
 		>
 			<path
@@ -476,9 +476,10 @@ export const LineIcon = () => {
 	);
 };
 
-export const RightCurve = () => {
+export const RightCurve = ({ className }) => {
 	return (
 		<svg
+			className={className}
 			width="447"
 			height="447"
 			viewBox="0 0 447 447"
@@ -495,25 +496,80 @@ export const RightCurve = () => {
 		</svg>
 	);
 };
-export const LeftCurve = () => {
+export const LeftCurve = ({ className }) => {
 	return (
 		<svg
-			// width="394"
-			// height="394"
-			// viewBox="0 0 394 394"
-			// fill="none"
-			// xmlns="http://www.w3.org/2000/svg"
-			width="200"
-			height="220"
-			viewBox="0 50 300 320"
+			className={className}
+			width="394"
+			height="394"
+			viewBox="0 0 394 394"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
 		>
 			<path
 				d="M293.29 90.3707C297.322 118.148 284.605 175.945 201.478 184.914C118.351 193.884 104.928 265.985 108.611 300.913M108.611 300.913L122.824 282.002M108.611 300.913L95.7048 282.946"
 				stroke="#3A83A1"
-				// stroke-opacity="0.79"
+				stroke-opacity="0.79"
 				stroke-width="5"
+				stroke-linecap="round"
+			/>
+		</svg>
+	);
+};
+
+export const HamburgerIcon = () => {
+	return (
+		<svg
+			width="24"
+			height="24"
+			viewBox="0 0 24 24"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<path
+				d="M4 18H20C20.55 18 21 17.55 21 17C21 16.45 20.55 16 20 16H4C3.45 16 3 16.45 3 17C3 17.55 3.45 18 4 18ZM4 13H20C20.55 13 21 12.55 21 12C21 11.45 20.55 11 20 11H4C3.45 11 3 11.45 3 12C3 12.55 3.45 13 4 13ZM3 7C3 7.55 3.45 8 4 8H20C20.55 8 21 7.55 21 7C21 6.45 20.55 6 20 6H4C3.45 6 3 6.45 3 7Z"
+				fill="#B4B4B4"
+			/>
+		</svg>
+	);
+};
+
+export const SmallLeftCurve = ({ className }) => {
+	return (
+		<svg
+			className={className}
+			width="170"
+			height="170"
+			viewBox="0 0 170 170"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<path
+				d="M33.0552 41.2554C32.9514 54.4808 42.5889 80.648 81.9696 79.5126C121.35 78.3772 132.233 111.177 132.75 127.718M132.75 127.718L124.904 119.8M132.75 127.718L137.625 118.504"
+				stroke="#3A83A1"
+				stroke-opacity="0.79"
+				stroke-width="3"
+				stroke-linecap="round"
+			/>
+		</svg>
+	);
+};
+
+export const SmallRightCurve = ({ className }) => {
+	return (
+		<svg
+			className={className}
+			width="188"
+			height="188"
+			viewBox="0 0 188 188"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<path
+				d="M149.206 45.1869C149.609 59.582 139.69 88.2791 96.7943 87.9051C53.8988 87.5311 42.7695 123.476 42.5688 141.494M42.5688 141.494L50.9367 132.703M42.5688 141.494L37.0604 131.571"
+				stroke="#3A83A1"
+				stroke-opacity="0.79"
+				stroke-width="3"
 				stroke-linecap="round"
 			/>
 		</svg>

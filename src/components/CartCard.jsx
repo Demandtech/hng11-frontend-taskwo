@@ -5,9 +5,11 @@ import { Button, Image } from "@nextui-org/react";
 const CartCard = ({ item }) => {
 	const [quantity, setQuantity] = useState(1);
 	return (
-		<div className="flex bg-white items-center justify-between p-2 sm:p-5">
-			<div className="flex sm:w-1/2 gap-3 sm:gap-6 ">
-				<Image height={100} width={100} src={item.image} />
+		<div className="flex bg-white items-center gap-5 justify-between p-2 sm:p-5">
+			<div className="flex items-center sm:w-1/2 gap-3 sm:gap-6 ">
+				<div>
+					<Image height={100} width={100} src={item.image} />
+				</div>
 				<div>
 					<p className="text-[15px] sm:text-base font-semibold whitespace-nowrap">
 						{item.name}

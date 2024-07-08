@@ -40,20 +40,20 @@ const HomeHero = () => {
 				</div>
 			</div>
 			<div className="-translate-y-20 lg:-translate-y-1/2 z-50">
-				<div className="px-3 lg:w-[80%] mx-auto right-0 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 -bottom-10">
+				<div className="px-3 lg:w-[1041px] mx-auto right-0 grid grid-cols-2 md:grid-cols-4 gap-5 -bottom-10">
 					<div className="w-full py-5 px-3 md:px-5 flex flex-col items-center gap-2  bg-white">
 						<AestheticIcon />
 						<h3 className="font-semibold whitespace-nowrap text-sm md:text-lg">
 							Aesthetic Appeal
 						</h3>
-						<p className="text-xs md:text-sm text-center text-[#8F8F8F]">
+						<p className="text-[10px] md:text-sm text-center text-[#8F8F8F]">
 							Eco-Friendly and beautiful designs to spice up your kitchen.
 						</p>
 					</div>
 					<div className="w-full py-5 px-3 gap-2 md:px-5 flex flex-col items-center  bg-white">
 						<EcoFriendlyIcon />
 						<h3 className="font-semibold text-sm md:text-lg">Eco-Friendly</h3>
-						<p className="text-xs text-center md:text-sm text-[#8F8F8F]">
+						<p className="text-[10px] text-center md:text-sm text-[#8F8F8F]">
 							Recycled and Biodegradable materials were used.
 						</p>
 					</div>
@@ -62,7 +62,7 @@ const HomeHero = () => {
 						<h3 className="font-semibold whitespace-nowrap text-sm md:text-lg">
 							Affordable Price
 						</h3>
-						<p className="text-xs md:text-sm text-center text-[#8F8F8F]">
+						<p className="text-[10px] md:text-sm text-center text-[#8F8F8F]">
 							Prices that suit your pockets for the best products
 						</p>
 					</div>
@@ -71,7 +71,7 @@ const HomeHero = () => {
 						<h3 className="font-semibold whitespace-nowrap text-sm md:text-lg">
 							Fast Delivery
 						</h3>
-						<p className="text-xs sm:text-sm text-center text-[#8F8F8F]">
+						<p className="text-[10px] sm:text-sm text-center text-[#8F8F8F]">
 							Our dispatch riders will bring your product to your door step
 						</p>
 					</div>

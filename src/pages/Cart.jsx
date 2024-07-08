@@ -24,7 +24,7 @@ const Cart = () => {
 						Order history
 					</p>
 				</div>
-				<div className="grid md:grid-cols-3 gap-10">
+				<div className="grid lg:grid-cols-3 gap-10">
 					<div className="md:col-span-2">
 						<div className="flex items-center sm:items-end justify-between">
 							<div className="inline-flex items-end sm:gap-3 sm:border-b border-lightgrey sm:pr-10">

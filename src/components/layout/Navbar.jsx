@@ -11,7 +11,14 @@ import {
 	Button,
 } from "@nextui-org/react";
 import { Link, useLocation } from "react-router-dom";
-import { CartIcon, LogoIcon, SearchIcon, UserIcon } from "../Svgs";
+import {
+	CartIcon,
+	LogoIcon,
+	SearchIcon,
+	UserIcon,
+	HamburgerIcon,
+	CloseIcon,
+} from "../Svgs";
 import logo from "../../assets/logo.png";
 
 export default function App() {
@@ -28,17 +35,18 @@ export default function App() {
 		<Navbar
 			isBlurred={false}
 			classNames={{
-				wrapper: "max-w-full gap-1 sm:gap-5 sm:gap-5 px-2  sm:px-5 md:px-20",
+				wrapper: "max-w-full  gap-1 sm:gap-5 sm:gap-5 px-5  px-5 md:px-10 lg:px-20",
 			}}
-			className="w-full bg-white"
+			className="w-full overflow-hidden   md:py-0 bg-white"
 			onMenuOpenChange={setIsMenuOpen}
 		>
-			<NavbarContent>
+			<NavbarContent justify="start">
 				<NavbarMenuToggle
+					icon={<HamburgerIcon />}
 					aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-					className="md:hidden"
+					className={` md:hidden`}
 				/>
-				<NavbarBrand>
+				<NavbarBrand className="hidden md:block">
 					<Link to="/">
 						<LogoIcon />
 					</Link>
@@ -53,7 +61,7 @@ export default function App() {
 					return (
 						<NavbarItem className="hover:text-primary" key={item.name}>
 							<Link
-								className={`pb-3 px-1 hover:text-primary text-lightgrey font-light text-sm transition-all duration-150 ease-linear ${
+								className={`pb-5 px-1 h-full hover:text-primary text-lightgrey font-light text-sm transition-all duration-150 ease-linear ${
 									location.pathname === item.href
 										? "border-b-4 border-primary font-semibold text-primary"
 										: ""
@@ -66,7 +74,7 @@ export default function App() {
 					);
 				})}
 			</NavbarContent>
-			<NavbarContent justify="end">
+			<NavbarContent className="gap-3 items-center  md:gap-4" justify="end">
 				<div className="hidden md:flex items-center">
 					<Button className="items-end pb-1" isIconOnly>
 						<SearchIcon />
@@ -76,7 +84,14 @@ export default function App() {
 						placeholder="search"
 					/>
 				</div>
-				<Link to="/cart" className=" flex items-center gap-2">
+
+				<Button className="md:hidden justify-end" isIconOnly>
+					<SearchIcon />
+				</Button>
+				<Link
+					to="/cart"
+					className="hidden md:flex md:first-line:flex items-center gap-2"
+				>
 					<div className="relative">
 						<CartIcon />
 						<div className="bg-primary w-2 h-2 rounded-full absolute top-0.5 -right-0.5"></div>
@@ -87,31 +102,45 @@ export default function App() {
 					<UserIcon />
 				</div>
 			</NavbarContent>
-			<NavbarMenu className="bg-white">
-				{menuItems.map((item, index) => (
-					<NavbarMenuItem key={`${item.name}`}>
-						<Link
-							className={` ${
-								location.pathname === item.href
-									? " text-primary"
-									: "text-lightgrey"
-							}`}
-							to={item.href}
-							size="lg"
-						>
-							{item.name}
+			<NavbarMenu className="bg-white p-0 top-0 z-50 bottom-0 min-h-screen ">
+				<div className="pb-10 px-5 pt-14">
+					<div className="flex mb-10 justify-end">
+						<NavbarMenuToggle
+							icon={<CloseIcon />}
+							aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+							className={` md:hidden`}
+						/>
+					</div>
+					<NavbarBrand className="md:hidden">
+						<Link to="/">
+							<LogoIcon />
 						</Link>
-					</NavbarMenuItem>
-				))}
-				<div className="flex items-center">
-					<Button className="items-end pb-1" isIconOnly>
-						<SearchIcon />
-					</Button>
-					<input
-						className="border-b bg-transparent placeholder:text-xs py-1 max-w-1/2 border-lightgrey"
-						placeholder="search"
-					/>
+					</NavbarBrand>
 				</div>
+				<div className="space-y-5  mb-5">
+					{menuItems.map((item, index) => (
+						<NavbarMenuItem className="w-full" key={`${item.name}`}>
+							<Link
+								className={` ${
+									location.pathname === item.href
+										? " text-primary font-medium border-r-4 border-primary bg-[#F3F3F3]"
+										: "text-lightgrey"
+								} w-full block py-3 px-5`}
+								to={item.href}
+								size="lg"
+							>
+								{item.name}
+							</Link>
+						</NavbarMenuItem>
+					))}
+				</div>
+				<Link to="/cart" className="flex md:hidden px-5 items-center gap-2">
+					<div className="relative">
+						<CartIcon />
+						<div className="bg-primary w-2 h-2 rounded-full absolute top-0.5 -right-0.5"></div>
+					</div>
+					<span className="text-xs text-lightgrey font-light">Cart(2)</span>
+				</Link>
 			</NavbarMenu>
 		</Navbar>
 	);
