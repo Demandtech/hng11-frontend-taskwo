@@ -24,8 +24,10 @@ const ProductAside = () => {
 	return (
 		<div className="flex mb-20 flex-col w-full min-h-dvh gap-10 overflow-y-auto">
 			<div>
-				<div className="bg-primary py-2 px-4 text-white">Product Category</div>
-				<ul className="bg-white space-y-3 p-4">
+				<div className="bg-primary font-semibold py-2 px-10 md:px-5 text-white">
+					Product Category
+				</div>
+				<ul className="bg-white space-y-5 pt-10 px-10 md:p-5">
 					<li>Pots</li>
 					<li>Pans</li>
 					<li>Cutlery</li>
@@ -34,8 +36,8 @@ const ProductAside = () => {
 				</ul>
 			</div>
 			<div>
-				<div className="bg-primary p-2 text-white text-center">Material</div>
-				<div className="bg-white flex flex-wrap gap-5 justify-center p-4">
+				<div className="bg-primary py-3  text-white px-10 font-semibold md:text-center">Material</div>
+				<div className="bg-white flex flex-wrap gap-5 md:justify-center px-10 md:px-5 py-4">
 					{["Ceramic", "Steel", "Aluminium", "Glass", "Wood", "Plastic"].map(
 						(item) => {
 							return (
@@ -56,8 +58,8 @@ const ProductAside = () => {
 				</div>
 			</div>
 			<div>
-				<div className="bg-primary p-2 text-white text-center">Price Range</div>
-				<div className="bg-white py-10 px-4">
+				<div className="bg-primary py-3 px-10 font-semibold text-white md:text-center">Price Range</div>
+				<div className="bg-white py-10 px-10 md:px-4">
 					<label htmlFor="" className="font-semibold text-2xl block mb-3">
 						₦{price[0]} - ₦{price[1]}
 					</label>

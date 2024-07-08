@@ -46,10 +46,11 @@ const Products = () => {
 					<div className=" md:w-[30%] ">
 						<div
 							className={`${
-								openFilter ? "block p-2" : "hidden"
-							} z-20 left-0 bottom-0 right-0 top-12 bg-[#f1f1f1] min-h-svh overflow-auto fixed md:static md:block`}
+								openFilter ? "block " : "hidden"
+							} z-20 left-0 bottom-0 right-0 top-12 bg-white md:bg-[#f1f1f1] min-h-svh overflow-auto fixed md:static md:block`}
 						>
-							<div className="flex mb-4 sticky pt-5 pb-2 bg-[#f1f1f1] top-0 justify-end md:hidden">
+							<div className="flex px-10 mb-4 z-20 justify-between sticky pt-14 pb-2  bg-white top-0 md:hidden">
+								<p className="font-bold text-2xl text-black90">Filter</p>
 								<Button
 									isIconOnly
 									onPress={() => setOpenFilter(false)}

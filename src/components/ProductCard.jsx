@@ -1,11 +1,36 @@
 import { Image, Button } from "@nextui-org/react";
-import { CartIcon, FilledStar, StrokedStar, ColorIcon } from "./Svgs";
+import {
+	CartIcon,
+	FilledStar,
+	StrokedStar,
+	ColorIcon,
+	LikeIcon,
+	UnlikeIcon,
+} from "./Svgs";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const ProductCard = ({ data }) => {
+	const [isLike, setIsLike] = useState(false);
 	return (
 		<div className="bg-white p-4  w-full lg:w-[370px] min-w-[300px] lg:max-w-[340px]">
-			<Image width={"100%"} height={"100%"} src={data.image} alt="product" />
+			<div className="relative">
+				<div className="absolute flex justify-between items-center top-8 z-20 left-0 right-0">
+					<p className="bg-primary text-base font-bold text-white px-5 py-3">
+						30% Off
+					</p>
+					<Button
+						onPress={() => {
+							setIsLike(!isLike);
+						}}
+						className="mr-4"
+						isIconOnly
+					>
+						{isLike ? <LikeIcon /> : <UnlikeIcon />}
+					</Button>
+				</div>
+				<Image width={"100%"} height={"100%"} src={data.image} alt="product" />
+			</div>
 
 			<div className="pt-4">
 				<div className="flex items-start  gap-4 justify-between">
