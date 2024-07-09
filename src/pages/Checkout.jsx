@@ -30,7 +30,10 @@ const Checkout = () => {
 					</h2>
 					<div className="space-y-10">
 						<div>
-							<label className="block text-black80 sm:text-lg" htmlFor="name">
+							<label
+								className="block text-black80 text-sm sm:text-lg"
+								htmlFor="name"
+							>
 								Name
 							</label>
 							<input
@@ -38,11 +41,14 @@ const Checkout = () => {
 								name="name"
 								type="text"
 								placeholder="Enter your name"
-								className="bg-transparent h-14 pl-8 border border-lightgrey w-48 p-2"
+								className="bg-transparent h-12 sm:h-14 pl-8 border border-lightgrey w-48 p-2"
 							/>
 						</div>
 						<div>
-							<label className="block text-black80 sm:text-lg" htmlFor="phone">
+							<label
+								className="block text-black80 text-sm sm:text-lg"
+								htmlFor="phone"
+							>
 								Phone Number
 							</label>
 							<input
@@ -50,11 +56,14 @@ const Checkout = () => {
 								type="text"
 								name="phone"
 								placeholder="Enter phone number"
-								className="bg-transparent h-14 pl-8 border border-lightgrey w-4/5 sm:max-w-80 p-2"
+								className="bg-transparent h-12 sm:h-14 pl-8 border border-lightgrey w-4/5 sm:max-w-80 p-2"
 							/>
 						</div>
 						<div>
-							<label className="block text-black80 sm:text-lg" htmlFor="name">
+							<label
+								className="block text-black80 text-sm sm:text-lg"
+								htmlFor="name"
+							>
 								Delivery Address
 							</label>
 							<textarea
@@ -69,7 +78,7 @@ const Checkout = () => {
 						<div className="flex gap-5 sm:gap-10">
 							<div className="w-full md:w-3/5 sm:w-48">
 								<label
-									className="block text-black80 sm:text-lg"
+									className="block text-black80 text-sm sm:text-lg"
 									htmlFor="state"
 								>
 									State
@@ -79,12 +88,12 @@ const Checkout = () => {
 									name="state"
 									type="text"
 									placeholder="Enter your state"
-									className="bg-transparent h-14 pl-8 border border-lightgrey w-full p-2"
+									className="bg-transparent h-12 sm:h-14 pl-8 border border-lightgrey w-full p-2"
 								/>
 							</div>
 							<div className="w-full md:w-2/5 sm:max-w-80">
 								<label
-									className="block text-black80 sm:text-lg"
+									className="block text-black80 text-sm sm:text-lg"
 									htmlFor="country"
 								>
 									Country
@@ -94,7 +103,7 @@ const Checkout = () => {
 									type="text"
 									name="country"
 									placeholder="Enter Country"
-									className="bg-transparent h-14 pl-8 border border-lightgrey w-full p-2"
+									className="bg-transparent h-12 sm:h-14 pl-8 border border-lightgrey w-full p-2"
 								/>
 							</div>
 						</div>
@@ -138,7 +147,7 @@ const Checkout = () => {
 						<div className="space-y-10">
 							<div>
 								<label
-									className="block text-black80 sm:text-lg"
+									className="block text-black80 text-sm sm:text-lg"
 									htmlFor="card_name"
 								>
 									Card Name
@@ -148,12 +157,12 @@ const Checkout = () => {
 									name="card_name"
 									type="text"
 									placeholder="Faith Alliyu"
-									className="bg-transparent h-14 pl-8 border border-lightgrey w-full p-2"
+									className="bg-transparent h-12 sm:h-14 pl-8 border border-lightgrey w-full p-2"
 								/>
 							</div>
 							<div>
 								<label
-									className="block text-black80 sm:text-lg"
+									className="block text-black80 text-sm sm:text-lg"
 									htmlFor="card_number"
 								>
 									Card Number
@@ -163,13 +172,13 @@ const Checkout = () => {
 									name="card_number"
 									type="text"
 									placeholder="0000-0000-0000-0000"
-									className="bg-transparent h-14 pl-8 border border-lightgrey w-full p-2"
+									className="bg-transparent h-12 sm:h-14 pl-8 border border-lightgrey w-full p-2"
 								/>
 							</div>
-							<div className="flex gap-10">
+							<div className="flex gap-5 sm:gap-10">
 								<div className="w-1/2 md:w-3/5">
 									<label
-										className="block text-black80 sm:text-lg"
+										className="block text-black80 text-sm sm:text-lg"
 										htmlFor="card_number"
 									>
 										Card expiry date
@@ -179,12 +188,12 @@ const Checkout = () => {
 										name="card_number"
 										type="text"
 										placeholder="10/20"
-										className="bg-transparent h-14 pl-8 border border-lightgrey w-full p-2"
+										className="bg-transparent h-12 sm:h-14 pl-8 border border-lightgrey w-full p-2"
 									/>
 								</div>
 								<div className="w-1/2 md:w-2/5">
 									<label
-										className="block text-black80 sm:text-lg"
+										className="block text-black80 text-sm sm:text-lg"
 										htmlFor="card_number"
 									>
 										CVV
@@ -194,7 +203,7 @@ const Checkout = () => {
 										name="card_number"
 										type="text"
 										placeholder="123"
-										className="bg-transparent text-black80 h-14 pl-8 border border-lightgrey w-full p-2"
+										className="bg-transparent text-black80 h-12 sm:h-14 pl-8 border border-lightgrey w-full p-2"
 									/>
 								</div>
 							</div>
