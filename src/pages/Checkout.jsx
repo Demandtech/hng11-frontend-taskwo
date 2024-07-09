@@ -66,8 +66,8 @@ const Checkout = () => {
 								className="bg-transparent  resize-none  pl-8 border border-lightgrey w-full p-2"
 							/>
 						</div>
-						<div className="flex gap-10">
-							<div className="w-3/5 sm:w-48">
+						<div className="flex gap-5 sm:gap-10">
+							<div className="w-full md:w-3/5 sm:w-48">
 								<label
 									className="block text-black80 sm:text-lg"
 									htmlFor="state"
@@ -82,7 +82,7 @@ const Checkout = () => {
 									className="bg-transparent h-14 pl-8 border border-lightgrey w-full p-2"
 								/>
 							</div>
-							<div className="w-2/5 sm:max-w-80">
+							<div className="w-full md:w-2/5 sm:max-w-80">
 								<label
 									className="block text-black80 sm:text-lg"
 									htmlFor="country"
