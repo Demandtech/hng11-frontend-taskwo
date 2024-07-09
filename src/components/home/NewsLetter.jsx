@@ -8,7 +8,7 @@ const NewsLetter = () => {
 			<div className="w-full md:w-1/2 py-5 px-10 md:px-16 bg-white">
 				<div className="sm:w-3/5 mb-7">
 					<h3 className="text-black mb-3 text-2xl md:text-3xl  font-semibold">
-						Sign Up for Our Newsletter
+						Sign Up for <br /> Our Newsletter
 					</h3>
 					<p className="text-black90 text-sm sm:text-base">
 						To be the first to receive updates and plenty of bonus gifts

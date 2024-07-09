@@ -10,7 +10,7 @@ const BestSeller = () => {
 				Our Best Sellers{" "}
 			</h3>
 
-			<div className="justify-between gap-10 flex overflow-x-auto">
+			<div className="justify-center gap-16 flex overflow-x-auto">
 				{products.slice(0, 3).map((item) => {
 					return <ProductCard data={item} key={item.id} />;
 				})}

@@ -27,7 +27,7 @@ const HomeHero = () => {
 				}}
 			>
 				<div className="text-center z-50 md:max-w-[575px] pt-20 text-white  mx-auto">
-					<h1 className="font-black px-2 md:px-0  z-50 md:leading-[50px] text-2xl md:text-5xl mb-2">
+					<h1 className="font-bold px-2 md:px-0  z-50 md:leading-[50px] text-2xl md:text-5xl mb-2">
 						Lets Help you
 						<br />
 						Spice up your Kitchen
