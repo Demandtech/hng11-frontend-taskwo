@@ -7,7 +7,7 @@ const ReviewCard = ({ item }) => {
 		<div className="bg-white p-5">
 			<div className="flex items-center">
 				<div className="flex items-center gap-5 mb-5">
-					<Avatar className="w-16 h-16" src={item.image} />
+					<Avatar name={item.name} className="w-16 h-16" src={item.image} />
 					<div>
 						<p className="text-sm sm:text-lg md:text-2xl mb-3 font-semibold  whitespace-nowrap">
 							{item.name}

@@ -1,7 +1,7 @@
 import { Button } from "@nextui-org/react";
 import React from "react";
 import products from "../../data";
-import ProductCard from "../ProductCard";
+import ProductCard from "../products/ProductCard";
 
 const BestSeller = () => {
 	return (

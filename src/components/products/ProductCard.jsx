@@ -6,7 +6,7 @@ import {
 	ColorIcon,
 	LikeIcon,
 	UnlikeIcon,
-} from "./Svgs";
+} from "../Svgs";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 

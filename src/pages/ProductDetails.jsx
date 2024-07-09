@@ -1,10 +1,10 @@
 import React from "react";
 import MainLayout from "../components/layout/MainLayout";
 import products from "../data";
-import ProductCard from "../components/ProductCard";
+import ProductCard from "../components/products/ProductCard";
 import ProductDetailsHero from "../components/productDetails/ProductDetailsHero";
 import Description from "../components/productDetails/Description";
-import Review from "../components/productDetails/Review";
+import Review from "../components/productDetails/Reviews";
 
 const ProductDetails = () => {
 	return (
@@ -20,7 +20,7 @@ const ProductDetails = () => {
 					</h3>
 					<div className="flex px-5 md:px-0 gap-10 overflow-x-auto">
 						{products.slice(0, 3).map((item) => {
-							return <ProductCard data={item} />;
+							return <ProductCard key={item.id} data={item} />;
 						})}
 					</div>
 				</div>

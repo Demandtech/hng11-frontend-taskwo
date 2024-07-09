@@ -3,7 +3,7 @@ import { ArrowLeftIcon, DeleteIcon } from "../components/Svgs";
 import CartLayout from "../components/layout/CartLayout";
 import { useNavigate, Link } from "react-router-dom";
 import products from "../data";
-import CartCard from "../components/CartCard";
+import CartCard from "../components/cart/CartCard";
 
 const Cart = () => {
 	const navigate = useNavigate();
@@ -44,7 +44,7 @@ const Cart = () => {
 						</div>
 						<div className="mt-5 space-y-4">
 							{products.map((item) => {
-								return <CartCard item={item} />;
+								return <CartCard key={item.id} item={item} />;
 							})}
 						</div>
 					</div>
@@ -53,23 +53,23 @@ const Cart = () => {
 							Order Summary
 						</div>
 						<div className="mb-5 bg-white text-lg py-5 px-10 space-y-3">
-							<p className="flex">
+							<div className="flex">
 								<p className="font-semibold ">Sub-Total :</p>{" "}
 								<p className="ml-auto"> ₦ 29,000.00</p>
-							</p>
+							</div>
 
-							<p className="flex">
+							<div className="flex">
 								<p className="font-semibold">Coupon :</p>{" "}
 								<p className="ml-auto"> - ₦ 999.00</p>
-							</p>
-							<p className="flex">
+							</div>
+							<div className="flex">
 								<p className="font-semibold">Shipping :</p>{" "}
 								<p className="ml-auto"> ₦ 2,000.00</p>
-							</p>
-							<p className=" flex">
+							</div>
+							<div className=" flex">
 								<p className="font-semibold">Total :</p>{" "}
 								<span className="ml-auto"> ₦31,999.99</span>
-							</p>
+							</div>
 						</div>
 						<Link
 							to="/checkout"

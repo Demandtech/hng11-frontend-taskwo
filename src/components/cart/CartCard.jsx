@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PlusIcon, MinusIcon } from "./Svgs";
+import { PlusIcon, MinusIcon } from "../Svgs";
 import { Button, Image } from "@nextui-org/react";
 
 const CartCard = ({ item }) => {
@@ -54,7 +54,7 @@ const CartCard = ({ item }) => {
 								});
 							}}
 							className="bg-white border flex items-center justify-center  w-5 h-5 border-primary"
-							isIconOnly
+							
 							size="sm"
 						>
 							<PlusIcon />

@@ -1,6 +1,6 @@
 import { Button } from "@nextui-org/react";
-import ProductAside from "../components/ProductAside";
-import ProductCard from "../components/ProductCard";
+import ProductAside from "../components/products/ProductAside";
+import ProductCard from "../components/products/ProductCard";
 import {
 	ArrowLeftIcon,
 	ArrowRightIcon,
