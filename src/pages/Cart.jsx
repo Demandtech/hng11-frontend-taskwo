@@ -2,11 +2,20 @@ import { Button } from "@nextui-org/react";
 import { ArrowLeftIcon, DeleteIcon } from "../components/Svgs";
 import CartLayout from "../components/layout/CartLayout";
 import { useNavigate, Link } from "react-router-dom";
-import products from "../data";
 import CartCard from "../components/cart/CartCard";
+import { useAppContext } from "../context/AppContext";
+import { useEffect } from "react";
 
 const Cart = () => {
 	const navigate = useNavigate();
+	const { carts, removeAllCartItems } = useAppContext();
+
+	useEffect(() => {
+		if (carts?.length < 1) {
+			navigate(-1);
+		}
+	}, [carts]);
+
 	return (
 		<CartLayout>
 			<div className="px-2 py-10 sm:px-5 md:px-20">
@@ -29,13 +38,14 @@ const Cart = () => {
 						<div className="flex items-center sm:items-end justify-between">
 							<div className="inline-flex items-end sm:gap-3 sm:border-b border-lightgrey sm:pr-10">
 								<h3 className="font-bold whitespace-nowrap text-lg md:text-3xl">
-									Shopping Cart(2)
+									Shopping Cart({carts?.length})
 								</h3>
 								<p className="border-b-2 hidden sm:block border-primary">
 									Order history
 								</p>
 							</div>
 							<Button
+								onPress={removeAllCartItems}
 								startContent={<DeleteIcon />}
 								className="sm:items-end text-sm sm:text-base"
 							>
@@ -43,7 +53,7 @@ const Cart = () => {
 							</Button>
 						</div>
 						<div className="mt-5 space-y-4">
-							{products.map((item) => {
+							{carts.map((item) => {
 								return <CartCard key={item.id} item={item} />;
 							})}
 						</div>

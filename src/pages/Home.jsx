@@ -13,9 +13,8 @@ const Home = () => {
 			<WhyChooseUs />
 			<BestSeller />
 			<Reviews />
-			{/*
 			<Blog />
-			<NewsLetter /> */}
+			<NewsLetter />
 		</MainLayout>
 	);
 };

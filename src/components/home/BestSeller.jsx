@@ -1,9 +1,11 @@
 import { Button } from "@nextui-org/react";
 import React from "react";
-import products from "../../data";
+// import products from "../../data";
 import ProductCard from "../products/ProductCard";
+import { useAppContext } from '../../context/AppContext';
 
 const BestSeller = () => {
+	const {products} = useAppContext()
 	return (
 		<div className="lg:max-w-[90%] px-5 md:px-0 mx-auto pb-10">
 			<h3 className="text-lg mb-14 text-black90 text-center md:text-2xl font-semibold">

@@ -9,9 +9,13 @@ import {
 } from "../Svgs";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useAppContext } from "../../context/AppContext";
 
 const ProductCard = ({ data }) => {
 	const [isLike, setIsLike] = useState(false);
+	const { addItemToCart } = useAppContext();
+
+	// console.log(data?.id)
 	return (
 		<div className="bg-white p-4  w-full lg:w-[370px] min-w-[300px] lg:max-w-[340px]">
 			<div className="relative">
@@ -29,14 +33,19 @@ const ProductCard = ({ data }) => {
 						{isLike ? <LikeIcon /> : <UnlikeIcon />}
 					</Button>
 				</div>
-				<Image width={"100%"} height={"100%"} src={data.image} alt="product" />
+				<Image
+					width={"100%"}
+					height={"100%"}
+					src={`https://api.timbu.cloud/images/${data?.photos[0].url}`}
+					alt="product"
+				/>
 			</div>
 
 			<div className="pt-4">
 				<div className="flex items-start  gap-4 justify-between">
 					<div className="flex  items-center">
 						<Link
-							to={`/products/${data.id}`}
+							to={`/products/${data?.id}`}
 							className="font-semibold whitespace-nowrap text-lg md:text-2xl"
 						>
 							{data.name}
@@ -59,13 +68,13 @@ const ProductCard = ({ data }) => {
 					</div>
 				</div>
 				<p className="w-full text-sm  sm:text-base sm:w-[80%]">
-					{data.description}
+					{data?.description?.slice(0, 50)}
 				</p>
 				<div className="py-2 flex items-center gap-2">
 					<div className="flex gap-1">
-						{data.colors.map((color) => {
+						{/* {data.colors.map((color) => {
 							return <ColorIcon key={color} color={color} />;
-						})}
+						})} */}
 					</div>
 					<p className="text-xs font-light  !text-grey text-start">
 						Colors Available
@@ -74,10 +83,15 @@ const ProductCard = ({ data }) => {
 				<div className="flex justify-between">
 					<div>
 						<p className="text-xs font-light  !text-grey text-start">Price</p>
-						<p className="text-lg md:text-2xl font-semibold">₦{data.price}</p>
+						<p className="text-lg md:text-2xl font-semibold">₦{data?.price}</p>
 					</div>
 					<div className="flex flex-col items-end">
-						<Button isIconOnly variant="solid" className="bg-primary">
+						<Button
+							onPress={() => addItemToCart({ id: data.id, quantity: 1 })}
+							isIconOnly
+							variant="solid"
+							className="bg-primary"
+						>
 							<CartIcon color="#ffffff" />
 						</Button>
 						<p className="text-xs font-light  !text-primary text-end">

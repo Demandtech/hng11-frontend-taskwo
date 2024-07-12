@@ -1,4 +1,4 @@
-import { Button } from "@nextui-org/react";
+import { Button, Spinner } from "@nextui-org/react";
 import ProductAside from "../components/products/ProductAside";
 import ProductCard from "../components/products/ProductCard";
 import {
@@ -8,11 +8,14 @@ import {
 	FilterIcon,
 } from "../components/Svgs";
 import MainLayout from "../components/layout/MainLayout";
-import products from "../data";
+// import products from "../data";
 import { useEffect, useState } from "react";
+import { useAppContext } from "../context/AppContext";
 
 const Products = () => {
 	const [openFilter, setOpenFilter] = useState(false);
+	const { getAllProducts, products, prevPage, nextPage } = useAppContext();
+	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
 		const body = document.body;
@@ -26,6 +29,20 @@ const Products = () => {
 			body.style.overflowY = "auto";
 		};
 	}, [openFilter]);
+
+	console.log(products)
+
+	useEffect(() => {
+		setIsLoading(true);
+		(async () => {
+			// console.log("HERE")
+			await getAllProducts();
+
+			setIsLoading(false);
+		})();
+	}, []);
+
+	// console.log(isLoading);
 	return (
 		<MainLayout>
 			<div className="py-14 px-2  sm:px-5 md:px-20 ">
@@ -66,28 +83,49 @@ const Products = () => {
 						</div>
 					</div>
 					<div className="md:w-[70%] px-5 md:px-0">
-						<div className="flex gap-7 flex-wrap mb-16 ">
-							{products.map((product) => {
-								return <ProductCard key={product.id} data={product} />;
-							})}
-						</div>
-						<div>
-							<ul className="flex items-center gap-2 md:gap-3 justify-end">
-								<li>
-									<ArrowLeftIcon />
-								</li>
-								<li className="p-3 text-lg font-medium text-[#8F8F8F]">1</li>
-								<li className="px-3 py-1 text-lg font-semibold text-white bg-primary">
-									2
-								</li>
-								<li className="p-3 text-lg font-medium text-[#8F8F8F]">3</li>
-								<li className="p-3 text-lg font-medium text-[#8F8F8F]">4</li>
-								<li className="p-3 text-lg font-medium text-[#8F8F8F]">5</li>
-								<li>
-									<ArrowRightIcon />
-								</li>
-							</ul>
-						</div>
+						{isLoading && !products?.length < 1 ? (
+							<div className="flex justify-center w-full">
+								<p className="text-center text-black90 font-semibold text-2xl">
+									Loading...
+								</p>
+							</div>
+						) : (
+							<div className="flex gap-7 flex-wrap mb-16 ">
+								{products?.length > 0 &&
+									products?.map((product) => {
+										return <ProductCard key={product.id} data={product} />;
+									})}
+							</div>
+						)}
+
+						{prevPage ||
+							(nextPage && (
+								<div>
+									<ul className="flex items-center gap-2 md:gap-3 justify-end">
+										<li>
+											<ArrowLeftIcon />
+										</li>
+										<li className="p-3 text-lg font-medium text-[#8F8F8F]">
+											1
+										</li>
+										<li className="px-3 py-1 text-lg font-semibold text-white bg-primary">
+											2
+										</li>
+										<li className="p-3 text-lg font-medium text-[#8F8F8F]">
+											3
+										</li>
+										<li className="p-3 text-lg font-medium text-[#8F8F8F]">
+											4
+										</li>
+										<li className="p-3 text-lg font-medium text-[#8F8F8F]">
+											5
+										</li>
+										<li>
+											<ArrowRightIcon />
+										</li>
+									</ul>
+								</div>
+							))}
 					</div>
 				</div>
 			</div>

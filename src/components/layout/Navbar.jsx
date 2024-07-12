@@ -20,9 +20,11 @@ import {
 	CloseIcon,
 } from "../Svgs";
 import logo from "../../assets/logo.png";
+import { useAppContext } from "../../context/AppContext";
 
 export default function App() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const { carts } = useAppContext();
 	const location = useLocation();
 	const menuItems = [
 		{ name: "Home", href: "/" },
@@ -31,11 +33,14 @@ export default function App() {
 		{ name: "Blog", href: "/blog" },
 	];
 
+	console.log(carts)
+
 	return (
 		<Navbar
 			isBlurred={false}
 			classNames={{
-				wrapper: "max-w-full  gap-1 sm:gap-5 sm:gap-5 px-5  px-5 md:px-10 lg:px-20",
+				wrapper:
+					"max-w-full  gap-1 sm:gap-5 sm:gap-5 px-5  px-5 md:px-10 lg:px-20",
 			}}
 			className="w-full overflow-hidden   md:py-0 bg-white"
 			onMenuOpenChange={setIsMenuOpen}
@@ -96,7 +101,9 @@ export default function App() {
 						<CartIcon />
 						<div className="bg-primary w-2 h-2 rounded-full absolute top-0.5 -right-0.5"></div>
 					</div>
-					<span className="text-xs text-lightgrey font-light">Cart(2)</span>
+					<span className="text-xs text-lightgrey font-light">
+						Cart({carts?.length})
+					</span>
 				</Link>
 				<div>
 					<UserIcon />
@@ -139,7 +146,9 @@ export default function App() {
 						<CartIcon />
 						<div className="bg-primary w-2 h-2 rounded-full absolute top-0.5 -right-0.5"></div>
 					</div>
-					<span className="text-xs text-lightgrey font-light">Cart(2)</span>
+					<span className="text-xs text-lightgrey font-light">
+						Cart({carts?.length})
+					</span>
 				</Link>
 			</NavbarMenu>
 		</Navbar>
