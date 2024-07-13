@@ -16,6 +16,7 @@ import mainImg from "../../assets/products/product-big.png";
 import products from "../../data";
 import { useState } from "react";
 import { useAppContext } from "../../context/AppContext";
+import { addCommas } from "../../helpers/formatPrice";
 
 const ProductDetailsHero = () => {
 	const { product, addItemToCart } = useAppContext();
@@ -57,7 +58,7 @@ const ProductDetailsHero = () => {
 					</Button>
 				</div>
 				<div className="flex gap-2">
-					{product?.photos.map((img, index) => {
+					{product?.photos?.map((img, index) => {
 						return (
 							<div
 								key={img.model_id}
@@ -68,10 +69,10 @@ const ProductDetailsHero = () => {
 									index === imgIndex
 										? " border-black90 opacity-50"
 										: "border-transparent opacity-100"
-								} relative h-28 flex-1 border-2 transition-all duration-300 ease-linear rounded-md overflow-hidden`}
+								} relative !h-28 flex-1 border-2 transition-all duration-300 ease-linear rounded-md overflow-hidden`}
 							>
-								<Image
-									className="w-full h-full"
+								<img
+									className="w-full !h-full object-cover object-center"
 									src={`https://api.timbu.cloud/images/${img?.url}`}
 								/>
 							</div>
@@ -87,7 +88,9 @@ const ProductDetailsHero = () => {
 					<p className="text-[10px] !text-black80 pb-[6px]">(in stock)</p>
 				</div>
 				<p className="max-w-[90%] py-2 text-base sm:text-lg text-black90 lg:text-2xl ">
-					{product?.description.slice(0, 50)}
+					{product?.description
+						? product?.description?.slice(0, 50)
+						: "Elevate your culinary experience with our premium ceramic cooking pot"}
 				</p>
 				<div className="flex items-end gap-2">
 					<div className="flex gap-[2px] pb-1 items-center">
@@ -102,7 +105,9 @@ const ProductDetailsHero = () => {
 					</p>
 				</div>
 				<p className="text-black80 text-sm leading-5 sm:text-base md:text-lg py-2">
-					{product?.description}
+					{product?.description
+						? product.description
+						: "Elevate your culinary experience with our premium ceramic cooking pot, meticulously crafted to enhance the flavors and textures of your favorite dishes. Made from high-quality ceramic, this versatile pot combines elegance with exceptional performance, making it a must-have for every kitchen."}
 				</p>
 				<div className="flex items-center">
 					<div className="py-2 flex items-center gap-2">
@@ -124,7 +129,7 @@ const ProductDetailsHero = () => {
 					<div className="">
 						<p className="text-xs font-light  !text-grey text-start">Price</p>
 						<p className="text-2xl lg:text-3xl font-semibold">
-							{/* ₦{product.price} */}
+							₦{addCommas(product?.current_price)}.00
 						</p>
 					</div>
 					<div className="flex items-center">
@@ -161,7 +166,13 @@ const ProductDetailsHero = () => {
 				</div>
 				<div className="flex gap-5 mt-5">
 					<Button
-						onPress={() => addItemToCart({ id: product.id, quantity })}
+						onPress={() =>
+							addItemToCart({
+								id: product?.id,
+								quantity,
+								price: product?.current_price,
+							})
+						}
 						size="lg"
 						className="border-2 text-primary font-normal w-full border-primary"
 					>

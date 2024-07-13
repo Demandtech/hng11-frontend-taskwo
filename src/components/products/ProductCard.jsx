@@ -10,15 +10,18 @@ import {
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useAppContext } from "../../context/AppContext";
+import { addCommas } from "../../helpers/formatPrice";
 
 const ProductCard = ({ data }) => {
 	const [isLike, setIsLike] = useState(false);
+	const [price, setPrice] = useState(data?.current_price[0]?.NGN[0]);
 	const { addItemToCart } = useAppContext();
 
-	// console.log(data?.id)
+	// console.log(price)
+
 	return (
 		<div className="bg-white p-4  w-full lg:w-[370px] min-w-[300px] lg:max-w-[340px]">
-			<div className="relative">
+			<div className="relative h-[250px] overflow-hidden w-full">
 				<div className="absolute flex justify-between items-center top-8 z-20 left-0 right-0">
 					<p className="bg-primary text-base font-bold text-white px-5 py-3">
 						30% Off
@@ -33,11 +36,12 @@ const ProductCard = ({ data }) => {
 						{isLike ? <LikeIcon /> : <UnlikeIcon />}
 					</Button>
 				</div>
-				<Image
-					width={"100%"}
-					height={"100%"}
+				<img
+					// width={"100%"}
+					// height={"100%"}
 					src={`https://api.timbu.cloud/images/${data?.photos[0].url}`}
 					alt="product"
+					className="h-full w-full"
 				/>
 			</div>
 
@@ -68,7 +72,9 @@ const ProductCard = ({ data }) => {
 					</div>
 				</div>
 				<p className="w-full text-sm  sm:text-base sm:w-[80%]">
-					{data?.description?.slice(0, 50)}
+					{data?.description
+						? data?.description?.slice(0, 50)
+						: "meticulously crafted to enhance the flavors "}
 				</p>
 				<div className="py-2 flex items-center gap-2">
 					<div className="flex gap-1">
@@ -83,11 +89,13 @@ const ProductCard = ({ data }) => {
 				<div className="flex justify-between">
 					<div>
 						<p className="text-xs font-light  !text-grey text-start">Price</p>
-						<p className="text-lg md:text-2xl font-semibold">₦{data?.price}</p>
+						<p className="text-lg md:text-2xl font-semibold">
+							₦{addCommas(price)}.00
+						</p>
 					</div>
 					<div className="flex flex-col items-end">
 						<Button
-							onPress={() => addItemToCart({ id: data.id, quantity: 1 })}
+							onPress={() => addItemToCart({ id: data.id, quantity: 1, price })}
 							isIconOnly
 							variant="solid"
 							className="bg-primary"

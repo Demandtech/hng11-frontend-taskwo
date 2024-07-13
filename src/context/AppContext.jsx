@@ -58,7 +58,7 @@ const AppProvider = ({ children }) => {
 
 			if (status !== 200) throw new Error();
 
-			// console.log(data);
+			console.log(data);
 
 			setInitialState((prev) => {
 				return {
@@ -71,7 +71,7 @@ const AppProvider = ({ children }) => {
 		}
 	};
 
-	const addItemToCart = async ({ id, quantity }) => {
+	const addItemToCart = async ({ id, quantity, price }) => {
 		setInitialState((prev) => {
 			const alreadyInCart = prev.carts.find((cart) => cart.id === id);
 
@@ -89,6 +89,7 @@ const AppProvider = ({ children }) => {
 				const newItem = prev.products.find((product) => product.id === id);
 				if (newItem) {
 					newItem.quantity = quantity;
+					newItem.price = price;
 					return {
 						...prev,
 						carts: [...prev.carts, newItem],
@@ -118,7 +119,7 @@ const AppProvider = ({ children }) => {
 				return cart.id === id
 					? {
 							...cart,
-							quantity: cart.quantity > 1 ? cart.quanty - 1 : cart.quanty,
+							quantity: cart.quantity > 1 ? cart.quantity - 1 : cart.quantity,
 					  }
 					: cart;
 			});
@@ -127,8 +128,6 @@ const AppProvider = ({ children }) => {
 				carts: newCarts,
 			};
 		});
-
-		snackBar("All cart items removed", "info");
 	};
 
 	const removeAllCartItems = async () => {

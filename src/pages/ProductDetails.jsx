@@ -10,7 +10,7 @@ import { useAppContext } from "../context/AppContext";
 
 const ProductDetails = () => {
 	const { id } = useParams();
-	const { getProduct, products } = useAppContext();
+	const { getProduct, products, getAllProducts } = useAppContext();
 
 	const [isLoading, setIsLoading] = useState(false);
 
@@ -19,6 +19,7 @@ const ProductDetails = () => {
 		(async () => {
 			// console.log("HERE")
 			await getProduct(id);
+			await getAllProducts();
 
 			setIsLoading(false);
 		})();
@@ -37,19 +38,20 @@ const ProductDetails = () => {
 						</p>
 					</div>
 				) : (
-					<ProductDetailsHero />
+					<>
+						<ProductDetailsHero />
+						<div className="mb-12">
+							<h3 className="text-lg mb-5 text-center md:text-2xl font-semibold">
+								You may also like this
+							</h3>
+							<div className="flex px-5 md:px-0 gap-10 overflow-x-auto">
+								{products?.slice(0, 3).map((item) => {
+									return <ProductCard key={item.id} data={item} />;
+								})}
+							</div>
+						</div>
+					</>
 				)}
-
-				<div className="mb-12">
-					<h3 className="text-lg mb-5 text-center md:text-2xl font-semibold">
-						You may also like this
-					</h3>
-					<div className="flex px-5 md:px-0 gap-10 overflow-x-auto">
-						{products?.slice(0, 3).map((item) => {
-							return <ProductCard key={item.id} data={item} />;
-						})}
-					</div>
-				</div>
 				<Description />
 				<Review />
 			</div>
