@@ -6,14 +6,17 @@ import "react-simple-toasts/dist/theme/dark.css";
 const AppContext = createContext(null);
 toastConfig({ theme: "dark" });
 const AppProvider = ({ children }) => {
-	const [initialState, setInitialState] = useState({
-		products: [],
-		product: null,
-		carts: [],
-		current_page: 1,
-		prevPage: null,
-		nextPage: null,
-		totalPage: 1,
+	const [initialState, setInitialState] = useState(() => {
+		const savedCarts = localStorage.getItem("CART");
+		return {
+			products: [],
+			product: null,
+			carts: savedCarts ? JSON.parse(savedCarts) : [],
+			current_page: 1,
+			prevPage: null,
+			nextPage: null,
+			totalPage: 1,
+		};
 	});
 	// const BASE_URL = "https://api.timbu.cloud";
 	const BASE_URL = import.meta.env.VITE_BASE_URL;
@@ -21,8 +24,6 @@ const AppProvider = ({ children }) => {
 	const APP_ID = import.meta.env.VITE_Appid;
 	const API_KEY = import.meta.env.VITE_Apikey;
 	const ORGANIZATION_ID = import.meta.env.VITE_organization_id;
-
-	console.log(SINGLE_BASE_URL);
 
 	const getAllProducts = async (showPage = 1) => {
 		try {
@@ -163,6 +164,10 @@ const AppProvider = ({ children }) => {
 			),
 		});
 	};
+
+	useEffect(() => {
+		localStorage.setItem("CART", JSON.stringify(initialState.carts));
+	}, [initialState]);
 
 	return (
 		<AppContext.Provider
