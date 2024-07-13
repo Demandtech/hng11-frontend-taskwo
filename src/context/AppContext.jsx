@@ -6,36 +6,36 @@ import "react-simple-toasts/dist/theme/dark.css";
 const AppContext = createContext(null);
 toastConfig({ theme: "dark" });
 const AppProvider = ({ children }) => {
-	const [initialState, setInitialState] = useState(() => {
-		const savedState = localStorage.getItem("INITIAL-STATE");
-		return savedState
-			? JSON.parse(savedState)
-			: {
-					products: [],
-					product: null,
-					carts: [],
-					page: 1,
-					prevPage: null,
-					nextPage: null,
-			  };
+	const [initialState, setInitialState] = useState({
+		products: [],
+		product: null,
+		carts: [],
+		current_page: 1,
+		prevPage: null,
+		nextPage: null,
+		totalPage: 1,
 	});
 	// const BASE_URL = "https://api.timbu.cloud";
+	const BASE_URL = import.meta.env.VITE_BASE_URL;
+	const SINGLE_BASE_URL = import.meta.env.VITE_SINGLE_BASE_URL;
 	const APP_ID = import.meta.env.VITE_Appid;
 	const API_KEY = import.meta.env.VITE_Apikey;
 	const ORGANIZATION_ID = import.meta.env.VITE_organization_id;
 
-	const getAllProducts = async () => {
+	console.log(SINGLE_BASE_URL);
+
+	const getAllProducts = async (showPage = 1) => {
 		try {
 			const {
-				data: { items, page, previous_page, next_page },
+				data: { items, page, previous_page, next_page, size, total, ...rest },
 				status,
 			} = await axios.get(
-				`/api/products?organization_id=${ORGANIZATION_ID}&reverse_sort=false&page=${initialState.page}&size=10&Appid=${APP_ID}&Apikey=${API_KEY}`
+				`${BASE_URL}/api/products?organization_id=${ORGANIZATION_ID}&reverse_sort=false&page=${showPage}&size=4&Appid=${APP_ID}&Apikey=${API_KEY}`
 			);
 
 			if (status !== 200) throw new Error();
 
-			// console.log(items);
+			// console.log(rest);
 
 			setInitialState((prev) => {
 				return {
@@ -44,6 +44,7 @@ const AppProvider = ({ children }) => {
 					page,
 					nextPage: next_page,
 					prevPage: previous_page,
+					totalPage: Math.ceil(total / size),
 				};
 			});
 		} catch (error) {
@@ -53,7 +54,7 @@ const AppProvider = ({ children }) => {
 	const getProduct = async (productId) => {
 		try {
 			const { data, status } = await axios.get(
-				`/api/products/${productId}?organization_id=${ORGANIZATION_ID}&reverse_sort=false&page=${initialState.page}&size=10&Appid=${APP_ID}&Apikey=${API_KEY}`
+				`${SINGLE_BASE_URL}/${productId}?organization_id=${ORGANIZATION_ID}&reverse_sort=false&size=10&Appid=${APP_ID}&Apikey=${API_KEY}`
 			);
 
 			if (status !== 200) throw new Error();
@@ -157,24 +158,12 @@ const AppProvider = ({ children }) => {
 							: "bg-[#d3302f]"
 					} p-3 rounded-md font-light text-sm text-white`}
 				>
-					{/* {type === "success" ? (
-						<IoMdCheckmarkCircleOutline size={20} />
-					) : type === "info" ? (
-						<BiSolidError size={20} />
-					) : (
-						<IoMdCloseCircle size={20} />
-					)} */}
 					<span>{text}</span>
 				</div>
 			),
 		});
 	};
 
-	useEffect(() => {
-		if (initialState) {
-			localStorage.setItem("INITIAL-STATE", JSON.stringify(initialState));
-		}
-	}, [initialState]);
 	return (
 		<AppContext.Provider
 			value={{

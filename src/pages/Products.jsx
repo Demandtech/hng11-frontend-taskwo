@@ -14,8 +14,9 @@ import { useAppContext } from "../context/AppContext";
 
 const Products = () => {
 	const [openFilter, setOpenFilter] = useState(false);
-	const { getAllProducts, products, prevPage, nextPage } = useAppContext();
+	const { getAllProducts, products, totalPage } = useAppContext();
 	const [isLoading, setIsLoading] = useState(false);
+	const [page, setPage] = useState(1);
 
 	useEffect(() => {
 		const body = document.body;
@@ -30,17 +31,19 @@ const Products = () => {
 		};
 	}, [openFilter]);
 
-	console.log(products)
+	console.log(products);
 
 	useEffect(() => {
 		setIsLoading(true);
 		(async () => {
 			// console.log("HERE")
-			await getAllProducts();
+			await getAllProducts(page);
 
 			setIsLoading(false);
 		})();
-	}, []);
+	}, [page]);
+
+	console.log(totalPage);
 
 	// console.log(isLoading);
 	return (
@@ -59,7 +62,7 @@ const Products = () => {
 						<FilterIcon />
 					</Button>
 				</div>
-				<div className="flex  md:gap-16">
+				<div className="flex relative  md:gap-16">
 					<div className=" md:w-[30%] ">
 						<div
 							className={`${
@@ -82,7 +85,7 @@ const Products = () => {
 							</div>
 						</div>
 					</div>
-					<div className="md:w-[70%] px-5 md:px-0">
+					<div className="md:w-[70%] px-5 md:px-0  min-h-[400px] md:min-h-[900px]">
 						{isLoading && !products?.length < 1 ? (
 							<div className="flex justify-center w-full">
 								<p className="text-center text-black90 font-semibold text-2xl">
@@ -98,34 +101,52 @@ const Products = () => {
 							</div>
 						)}
 
-						{prevPage ||
-							(nextPage && (
-								<div>
-									<ul className="flex items-center gap-2 md:gap-3 justify-end">
-										<li>
-											<ArrowLeftIcon />
-										</li>
-										<li className="p-3 text-lg font-medium text-[#8F8F8F]">
-											1
-										</li>
-										<li className="px-3 py-1 text-lg font-semibold text-white bg-primary">
-											2
-										</li>
-										<li className="p-3 text-lg font-medium text-[#8F8F8F]">
-											3
-										</li>
-										<li className="p-3 text-lg font-medium text-[#8F8F8F]">
-											4
-										</li>
-										<li className="p-3 text-lg font-medium text-[#8F8F8F]">
-											5
-										</li>
-										<li>
-											<ArrowRightIcon />
-										</li>
-									</ul>
-								</div>
-							))}
+						{totalPage > 1 && (
+							<div className="">
+								<ul className="flex items-center gap-2 md:gap-3 justify-end">
+									<Button
+										onPress={() => {
+											setPage((prev) => {
+												return prev > 1 ? prev - 1 : prev;
+											});
+										}}
+										isIconOnly
+										className="rounded-full"
+									>
+										<ArrowLeftIcon />
+									</Button>
+									{Array.from({ length: totalPage }).map((_, index) => {
+										return (
+											<Button
+												onPress={() => {
+													setPage(index + 1);
+												}}
+												isIconOnly
+												className={`${
+													page === index + 1
+														? "bg-primary text-white font-semibold py-1"
+														: "text-[#8F8F8F] font-medium"
+												} p-3 text-lg `}
+											>
+												{index + 1}
+											</Button>
+										);
+									})}
+
+									<Button
+										onPress={() => {
+											setPage((prev) => {
+												return prev < totalPage ? prev + 1 : prev;
+											});
+										}}
+										className="rounded-full"
+										isIconOnly
+									>
+										<ArrowRightIcon />
+									</Button>
+								</ul>
+							</div>
+						)}
 					</div>
 				</div>
 			</div>
