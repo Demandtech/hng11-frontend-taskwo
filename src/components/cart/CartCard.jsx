@@ -42,7 +42,9 @@ const CartCard = ({ item }) => {
 						</p>
 					</Link>
 					<p className="text-[10px] sm:text-xs">
-						{item?.description?.slice(0, 50)}
+						{item?.description
+							? item?.description?.slice(0, 50)
+							: "meticulously crafted to enhance the flavors "}
 					</p>
 				</div>
 			</div>

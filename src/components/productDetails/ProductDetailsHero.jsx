@@ -1,4 +1,4 @@
-import { Button, Image } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 import {
 	ArrowLeftIcon,
 	ArrowRightIcon,
@@ -9,11 +9,6 @@ import {
 	PlusIcon,
 	MinusIcon,
 } from "../Svgs";
-import thumbnail1 from "../../assets/products/thumbnail1.png";
-import thumbnail2 from "../../assets/products/thumbnail2.png";
-import thumbnail3 from "../../assets/products/thumbnail3.png";
-import mainImg from "../../assets/products/product-big.png";
-import products from "../../data";
 import { useState } from "react";
 import { useAppContext } from "../../context/AppContext";
 import { addCommas } from "../../helpers/formatPrice";
@@ -110,16 +105,16 @@ const ProductDetailsHero = () => {
 						: "Elevate your culinary experience with our premium ceramic cooking pot, meticulously crafted to enhance the flavors and textures of your favorite dishes. Made from high-quality ceramic, this versatile pot combines elegance with exceptional performance, making it a must-have for every kitchen."}
 				</p>
 				<div className="flex items-center">
-					<div className="py-2 flex items-center gap-2">
+					{/* <div className="py-2 flex items-center gap-2">
 						<div className="flex gap-1">
-							{/* {product.colors.map((color) => {
+							{product.colors.map((color) => {
 								return <ColorIcon key={color} color={color} />;
-							})} */}
+							})}
 						</div>
 						<p className="text-xs font-light  !text-grey text-start">
 							Colors Available
 						</p>
-					</div>
+					</div> */}
 					<Button variant="light" className="ml-auto flex items-center gap-1">
 						<CouponIcon />
 						<span className="text-primary text-xs">use coupon</span>

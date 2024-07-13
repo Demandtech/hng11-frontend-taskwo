@@ -76,16 +76,16 @@ const ProductCard = ({ data }) => {
 						? data?.description?.slice(0, 50)
 						: "meticulously crafted to enhance the flavors "}
 				</p>
-				<div className="py-2 flex items-center gap-2">
+				{/* <div className="py-2 flex items-center gap-2">
 					<div className="flex gap-1">
-						{/* {data.colors.map((color) => {
+						{data.colors.map((color) => {
 							return <ColorIcon key={color} color={color} />;
-						})} */}
+						})} 
 					</div>
 					<p className="text-xs font-light  !text-grey text-start">
 						Colors Available
 					</p>
-				</div>
+				</div> */}
 				<div className="flex justify-between">
 					<div>
 						<p className="text-xs font-light  !text-grey text-start">Price</p>

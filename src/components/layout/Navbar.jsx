@@ -33,8 +33,6 @@ export default function App() {
 		{ name: "Blog", href: "/blog" },
 	];
 
-	console.log(carts)
-
 	return (
 		<Navbar
 			isBlurred={false}

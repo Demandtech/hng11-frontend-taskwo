@@ -27,16 +27,24 @@ const ProductAside = () => {
 				<div className="bg-primary font-semibold py-2 px-10 md:px-5 text-white">
 					Product Category
 				</div>
-				<ul className="bg-white space-y-5 pt-10 px-10 md:p-5">
-					<li>Pots</li>
-					<li>Pans</li>
-					<li>Cutlery</li>
-					<li>TableCloth</li>
-					<li>Knives</li>
+				<ul className="bg-white py-6  ">
+					<li className="hover:bg-[#F3F3F3] py-5 cursor-pointer px-10 md:px-5 ">Pots</li>
+					<li className="hover:bg-[#F3F3F3] py-5 cursor-pointer px-10 md:px-5 ">Pans</li>
+					<li className="hover:bg-[#F3F3F3] py-5 cursor-pointer px-10 md:px-5 ">
+						Cutlery
+					</li>
+					<li className="hover:bg-[#F3F3F3] py-5 cursor-pointer px-10 md:px-5 ">
+						TableCloth
+					</li>
+					<li className="hover:bg-[#F3F3F3] py-5 cursor-pointer px-10 md:px-5 ">
+						Knives
+					</li>
 				</ul>
 			</div>
 			<div>
-				<div className="bg-primary py-3  text-white px-10 font-semibold md:text-center">Material</div>
+				<div className="bg-primary py-3  text-white px-10 font-semibold md:text-center">
+					Material
+				</div>
 				<div className="bg-white flex flex-wrap gap-5 md:justify-center px-10 md:px-5 py-4">
 					{["Ceramic", "Steel", "Aluminium", "Glass", "Wood", "Plastic"].map(
 						(item) => {
@@ -58,7 +66,9 @@ const ProductAside = () => {
 				</div>
 			</div>
 			<div>
-				<div className="bg-primary py-3 px-10 font-semibold text-white md:text-center">Price Range</div>
+				<div className="bg-primary py-3 px-10 font-semibold text-white md:text-center">
+					Price Range
+				</div>
 				<div className="bg-white py-10 px-10 md:px-4">
 					<label htmlFor="" className="font-semibold text-2xl block mb-3">
 						₦{price[0]} - ₦{price[1]}
