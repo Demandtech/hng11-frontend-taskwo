@@ -12,11 +12,13 @@ import {
 import { useState } from "react";
 import { useAppContext } from "../../context/AppContext";
 import { addCommas } from "../../helpers/formatPrice";
+import { useNavigate } from "react-router-dom";
 
 const ProductDetailsHero = () => {
 	const { product, addItemToCart } = useAppContext();
 	const [quantity, setQuantity] = useState(1);
 	const [imgIndex, setImgIndex] = useState(0);
+	const navigate = useNavigate();
 
 	return (
 		<div className="flex flex-col md:flex-row gap-10 pb-10">
@@ -174,6 +176,14 @@ const ProductDetailsHero = () => {
 						Add to Cart
 					</Button>
 					<Button
+						onPress={() => {
+							addItemToCart({
+								id: product?.id,
+								quantity,
+								price: product?.current_price,
+							});
+							navigate("/cart");
+						}}
 						size="lg"
 						className="bg-primary font-normal w-full text-white"
 					>
