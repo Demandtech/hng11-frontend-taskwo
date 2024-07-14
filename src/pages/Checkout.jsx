@@ -94,7 +94,7 @@ const Checkout = () => {
 		if (Object.values(info).some((item) => item === "")) {
 			snackBar("Please check Delivery Information", "info");
 		} else if (!cardInfo.name) {
-			snackBar("Name Can not be empty", "info");
+			snackBar("Card name Can not be empty", "info");
 		} else if (cardInfo?.cardNumber?.length !== 19) {
 			snackBar("Please check card number", "info");
 		} else if (cardInfo.expDate.length !== 5) {
