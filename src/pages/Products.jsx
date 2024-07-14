@@ -79,7 +79,7 @@ const Products = () => {
 							</div>
 						</div>
 					</div>
-					<div className="md:w-[70%] relative px-5 md:px-0  min-h-[400px] md:min-h-[900px]">
+					<div className="md:w-[70%] relative px-5 md:px-0  min-h-[400px] md:min-h-[1044px]">
 						
 						{isLoading && !products?.length < 1 ? (
 							<div className="flex justify-center w-full">

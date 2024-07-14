@@ -97,7 +97,9 @@ export default function App() {
 				>
 					<div className="relative">
 						<CartIcon />
-						<div className="bg-primary w-2 h-2 rounded-full absolute top-0.5 -right-0.5"></div>
+						{carts.length > 0 && (
+							<div className="bg-primary w-2 h-2 rounded-full absolute top-0.5 -right-0.5"></div>
+						)}
 					</div>
 					<span className="text-xs text-lightgrey font-light">
 						Cart({carts?.length})
@@ -142,7 +144,9 @@ export default function App() {
 				<Link to="/cart" className="flex md:hidden px-5 items-center gap-2">
 					<div className="relative">
 						<CartIcon />
-						<div className="bg-primary w-2 h-2 rounded-full absolute top-0.5 -right-0.5"></div>
+						{carts.length > 0 && (
+							<div className="bg-primary w-2 h-2 rounded-full absolute top-0.5 -right-0.5"></div>
+						)}
 					</div>
 					<span className="text-xs text-lightgrey font-light">
 						Cart({carts?.length})

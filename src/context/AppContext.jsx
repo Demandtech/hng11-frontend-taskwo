@@ -18,8 +18,8 @@ const AppProvider = ({ children }) => {
 			totalPage: 1,
 		};
 	});
-	// const BASE_URL = "https://api.timbu.cloud";
 	const BASE_URL = import.meta.env.VITE_BASE_URL;
+	const PRODUCTS_URL = import.meta.env.VITE_PRODUCTS_URL;
 	const SINGLE_BASE_URL = import.meta.env.VITE_SINGLE_BASE_URL;
 	const APP_ID = import.meta.env.VITE_Appid;
 	const API_KEY = import.meta.env.VITE_Apikey;
@@ -31,7 +31,7 @@ const AppProvider = ({ children }) => {
 				data: { items, page, previous_page, next_page, size, total, ...rest },
 				status,
 			} = await axios.get(
-				`${BASE_URL}/api/products?organization_id=${ORGANIZATION_ID}&reverse_sort=false&page=${showPage}&size=4&Appid=${APP_ID}&Apikey=${API_KEY}`
+				`${PRODUCTS_URL}/api/products?organization_id=${ORGANIZATION_ID}&reverse_sort=true&page=${showPage}&size=4&Appid=${APP_ID}&Apikey=${API_KEY}`
 			);
 
 			if (status !== 200) throw new Error();
@@ -68,6 +68,29 @@ const AppProvider = ({ children }) => {
 					product: data,
 				};
 			});
+		} catch (error) {
+			console.log(error);
+		}
+	};
+	const getAllCategories = async () => {
+		try {
+			const { data, status } = await axios.get(
+				`${BASE_URL}/categories?organization_id=${ORGANIZATION_ID}&reverse_sort=false&size=10&Appid=${APP_ID}&Apikey=${API_KEY}`
+			);
+
+			if (status !== 200) throw new Error();
+
+			// console.log(data);
+
+			// setInitialState((prev) => {
+			// 	return {
+			// 		...prev,
+			// 		product: data,
+			// 	};
+			// });
+			console.log("HERE")
+			
+			console.log(data);
 		} catch (error) {
 			console.log(error);
 		}
@@ -132,14 +155,16 @@ const AppProvider = ({ children }) => {
 		});
 	};
 
-	const removeAllCartItems = async () => {
+	const removeAllCartItems = async (type = "normal") => {
 		setInitialState((prev) => {
 			return {
 				...prev,
 				carts: [],
 			};
 		});
-		snackBar("All cart items removed", "info");
+		if (type !== "checkout") {
+			snackBar("All cart items removed", "info");
+		}
 	};
 
 	const snackBar = (message, type) => {
@@ -179,6 +204,8 @@ const AppProvider = ({ children }) => {
 				addQuantityToItem,
 				removeQuantityFromItem,
 				removeAllCartItems,
+				snackBar,
+				getAllCategories,
 			}}
 		>
 			{children}

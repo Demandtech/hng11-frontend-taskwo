@@ -1,9 +1,11 @@
 import { Slider, Chip } from "@nextui-org/react";
 import { useState, useEffect } from "react";
+import { useAppContext } from "../../context/AppContext";
 
 const ProductAside = () => {
 	const [price, setPrice] = useState([2000, 33000]);
 	const [material, setMaterial] = useState(new Set());
+	const { getAllCategories } = useAppContext();
 
 	const handleAddMaterial = (item) => {
 		setMaterial((prev) => {
@@ -17,9 +19,11 @@ const ProductAside = () => {
 		});
 	};
 
-	// useEffect(() => {
-	// 	console.log(material);
-	// }, [material]);
+	useEffect(() => {
+		(async () => {
+			await getAllCategories();
+		})();
+	}, []);
 
 	return (
 		<div className="flex mb-20 flex-col w-full min-h-dvh gap-10 overflow-y-auto">
@@ -28,8 +32,12 @@ const ProductAside = () => {
 					Product Category
 				</div>
 				<ul className="bg-white py-6  ">
-					<li className="hover:bg-[#F3F3F3] py-5 cursor-pointer px-10 md:px-5 ">Pots</li>
-					<li className="hover:bg-[#F3F3F3] py-5 cursor-pointer px-10 md:px-5 ">Pans</li>
+					<li className="hover:bg-[#F3F3F3] py-5 cursor-pointer px-10 md:px-5 ">
+						Pots
+					</li>
+					<li className="hover:bg-[#F3F3F3] py-5 cursor-pointer px-10 md:px-5 ">
+						Pans
+					</li>
 					<li className="hover:bg-[#F3F3F3] py-5 cursor-pointer px-10 md:px-5 ">
 						Cutlery
 					</li>

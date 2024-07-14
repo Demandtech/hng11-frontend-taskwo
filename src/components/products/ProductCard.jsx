@@ -17,8 +17,6 @@ const ProductCard = ({ data }) => {
 	const [price, setPrice] = useState(data?.current_price[0]?.NGN[0]);
 	const { addItemToCart } = useAppContext();
 
-	// console.log(price)
-
 	return (
 		<div className="bg-white p-4  w-full lg:w-[370px] min-w-[300px] lg:max-w-[340px]">
 			<div className="relative h-[250px] overflow-hidden w-full">
@@ -39,9 +37,9 @@ const ProductCard = ({ data }) => {
 				<img
 					// width={"100%"}
 					// height={"100%"}
-					src={`https://api.timbu.cloud/images/${data?.photos[0].url}`}
+					src={`https://api.timbu.cloud/images/${data?.photos[0]?.url}`}
 					alt="product"
-					className="h-full w-full"
+					className="h-full w-full object-cover object-center"
 				/>
 			</div>
 
@@ -50,9 +48,9 @@ const ProductCard = ({ data }) => {
 					<div className="flex  items-center">
 						<Link
 							to={`/products/${data?.id}`}
-							className="font-semibold whitespace-nowrap text-lg md:text-2xl"
+							className="font-semibold whitespace-nowrap text-lg"
 						>
-							{data.name}
+							{data?.name}
 						</Link>
 						<p className="text-[10px] !text-black80 whitespace-nowrap">
 							(in stock)

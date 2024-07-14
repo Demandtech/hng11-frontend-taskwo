@@ -21,7 +21,7 @@ const ProductDetailsHero = () => {
 	const navigate = useNavigate();
 
 	return (
-		<div className="flex flex-col md:flex-row gap-10 pb-10">
+		<div className="flex flex-col md:flex-row gap-10 pb-10 mb-10">
 			<div className="w-full md:w-1/2 flex flex-col gap-5">
 				<div className="relative rounded-lg overflow-hidden h-[300px] md:h-[500px]">
 					<img
