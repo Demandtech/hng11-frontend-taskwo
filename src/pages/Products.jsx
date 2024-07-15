@@ -10,12 +10,14 @@ import {
 import MainLayout from "../components/layout/MainLayout";
 import { useEffect, useState } from "react";
 import { useAppContext } from "../context/AppContext";
+import { useSearchParams } from "react-router-dom";
 
 const Products = () => {
+	const [searchParams, setSearchParams] = useSearchParams();
 	const [openFilter, setOpenFilter] = useState(false);
 	const { getAllProducts, products, totalPage } = useAppContext();
 	const [isLoading, setIsLoading] = useState(false);
-	const [page, setPage] = useState(1);
+	const [page, setPage] = useState(() => Number(searchParams.get("page")) ?? 1);
 
 	useEffect(() => {
 		const body = document.body;
@@ -30,7 +32,10 @@ const Products = () => {
 		};
 	}, [openFilter]);
 
+
+
 	useEffect(() => {
+		setSearchParams({ page });
 		setIsLoading(true);
 		(async () => {
 			// console.log("HERE")
@@ -112,6 +117,7 @@ const Products = () => {
 									{Array.from({ length: totalPage }).map((_, index) => {
 										return (
 											<Button
+												key={index}
 												onPress={() => {
 													setPage(index + 1);
 												}}
