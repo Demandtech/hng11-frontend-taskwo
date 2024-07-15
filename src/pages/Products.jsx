@@ -17,7 +17,7 @@ const Products = () => {
 	const [openFilter, setOpenFilter] = useState(false);
 	const { getAllProducts, products, totalPage } = useAppContext();
 	const [isLoading, setIsLoading] = useState(false);
-	const [page, setPage] = useState(() => Number(searchParams.get("page")) ?? 1);
+	const [page, setPage] = useState(1);
 
 	useEffect(() => {
 		const body = document.body;
@@ -32,10 +32,12 @@ const Products = () => {
 		};
 	}, [openFilter]);
 
-
-
 	useEffect(() => {
-		setSearchParams({ page });
+		if (page > 1) {
+			setSearchParams({ page });
+		} else {
+			setSearchParams({});
+		}
 		setIsLoading(true);
 		(async () => {
 			// console.log("HERE")
