@@ -17,7 +17,9 @@ const Products = () => {
 	const [openFilter, setOpenFilter] = useState(false);
 	const { getAllProducts, products, totalPage } = useAppContext();
 	const [isLoading, setIsLoading] = useState(false);
-	const [page, setPage] = useState(1);
+	const [page, setPage] = useState(() =>
+		searchParams.get("page") ? Number(searchParams.get("page")) : 1
+	);
 
 	useEffect(() => {
 		const body = document.body;
