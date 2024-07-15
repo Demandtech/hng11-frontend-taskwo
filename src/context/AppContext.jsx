@@ -97,6 +97,7 @@ const AppProvider = ({ children }) => {
 	};
 
 	const addItemToCart = async ({ id, quantity, price }) => {
+		console.log("HERE")
 		setInitialState((prev) => {
 			const alreadyInCart = prev.carts.find((cart) => cart.id === id);
 

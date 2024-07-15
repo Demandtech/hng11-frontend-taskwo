@@ -80,7 +80,6 @@ const Products = () => {
 						</div>
 					</div>
 					<div className="md:w-[70%] relative px-5 md:px-0  min-h-[400px] md:min-h-[1044px]">
-						
 						{isLoading && !products?.length < 1 ? (
 							<div className="flex justify-center w-full">
 								<p className="text-center text-black90 font-semibold text-2xl">
@@ -98,7 +97,7 @@ const Products = () => {
 
 						{totalPage > 1 && (
 							<div className="absolute bottom-0 right-0">
-								<ul className="flex items-center gap-2 md:gap-3 justify-end">
+								<ul className="flex items-center gap-1  md:gap-3 justify-end">
 									<Button
 										onPress={() => {
 											setPage((prev) => {
@@ -121,7 +120,7 @@ const Products = () => {
 													page === index + 1
 														? "bg-primary text-white font-semibold py-1"
 														: "text-[#8F8F8F] font-medium"
-												} p-3 text-lg `}
+												} h-6 min-w-6 !w-6 p-1 sm:min-w-10 sm:h-10 sm:p-3  text-sm sm:text-lg `}
 											>
 												{index + 1}
 											</Button>
